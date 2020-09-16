@@ -1,9 +1,16 @@
 <div class="card shadow py-2">
     <div class="card-body">
-        <form action="<?= base_url('Pages/tambah_kategori'); ?>" method="POST">
-            <input name="nama_kategori" type="text" placeholder="Nama Barang" class="form-control">
-            <button type="submit" class="btn btn-primary mb-3"> <span class="fa fa-plus-circle"></span> Tambah Barang</button>
+    <div class="row">
+    <div class="col-md-2">
+    <form action="<?= base_url('Pages/tambah_kategori'); ?>" method="POST">
+            <input name="nama_kategori" type="text" placeholder="Nama Kategori" class="form-control">
+    </div>
+    <div class="col-md-4">
+            <button type="submit" class="btn btn-primary"> <span class="fa fa-plus-circle"></span> Tambah Kategori</button>
         </form>
+    </div>
+    </div>
+    <br>
         <div class="table-responsive">
         <?php echo $this->session->flashdata('tambahkategori'); ?>
         <?php echo $this->session->flashdata('deletekategori'); ?>

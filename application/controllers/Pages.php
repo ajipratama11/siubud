@@ -10,12 +10,12 @@ class Pages extends CI_Controller
 		$this->load->model('M_barang');
 		$this->load->model('M_kategori');
 		$this->load->model('M_akun');
-		if ($this->session->userdata('status') != "login") {
-            echo "<script>
-                alert('Anda harus login terlebih dahulu');
-                window.location.href = '" . base_url('Login') . "';
-            </script>"; //Url Logi
-        }
+		// if ($this->session->userdata('status') != "login") {
+        //     echo "<script>
+        //         alert('Anda harus login terlebih dahulu');
+        //         window.location.href = '" . base_url('Login') . "';
+        //     </script>"; //Url Logi
+        // }
 	}
 	public function home()
 	{
@@ -115,28 +115,8 @@ class Pages extends CI_Controller
 	{
 		$this->load->view("auth/login");
 	}
-
-	public function tambah_barang()
-	{
-		$kode_barang = $this->M_barang->get_idbarang();
-		$this->M_barang->addBarang($kode_barang);
-		$this->session->set_flashdata('success', '<div class="alert alert-success" role="alert">Barang Berhasil Disimpan :)</div>');
-		redirect('Pages/table_barang');
-	}
-	public function tambah_akun()
-	{
-		$username = $this->input->post('username');
-		$sql = $this->db->query("SELECT * FROM `admin` WHERE username='$username'")->num_rows();
-
-		if($sql != 0){
-			$this->session->set_flashdata('usernamesudahada', '<div class="alert alert-danger" role="alert">Username sudah digunakan :)</div>');
-		redirect('Pages/table_akun');
-		}else{
-			$this->M_akun->addAkun();
-			$this->session->set_flashdata('usernamebelumada', '<div class="alert alert-success" role="alert">Berhasil Tambah Akun :)</div>');
-			redirect('Pages/table_akun');
-		}
-	}
+	
+	
 	public function tambah_kategori()
 	{
 		$id_kategori = $this->M_kategori->get_idkategori();

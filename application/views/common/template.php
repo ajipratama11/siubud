@@ -37,7 +37,7 @@
           <div class="sidebar-brand-icon">
             <i class="fas fa-desktop"></i>
           </div>
-          <div class="sidebar-brand-text mx-3">E-Kasir <sup><small> Kraton</small></sup></div>
+          <div class="sidebar-brand-text mx-3">SiUbud <sup><small> Admin</small></sup></div>
         </a>
 
         <!-- Nav Item - Dashboard -->
@@ -53,16 +53,7 @@
         </div>
 
         <!-- Nav Item - Pages Collapse Menu -->
-        <li class="nav-item">
-          <a class="nav-link" href="<?php echo base_url() . 'transaksi/pembelian' ?>">
-            <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Pembelian Barang</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="<?php echo base_url() . 'transaksi/penjualan' ?>">
-            <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Penjualan Barang</span></a>
-        </li>
+        
         <li class="nav-item">
           <a class="nav-link" href="<?php echo base_url() . 'transaksi/kas' ?>">
             <i class="fas fa-fw fa-tachometer-alt"></i>
