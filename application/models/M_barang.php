@@ -105,6 +105,8 @@ class M_barang   extends CI_Model
 
     private function _uploadImage()
     {
+        $data = array(); 
+        
         $config['upload_path']          =  './assets/img';
         $config['allowed_types']        = 'gif|jpg|png|JPG';
         $config['max_size']             = 9048;
