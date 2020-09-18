@@ -11,12 +11,12 @@ class Pages extends CI_Controller
 		$this->load->model('M_kategori');
 		$this->load->model('M_artikel');
 		$this->load->model('M_akun');
-		// if ($this->session->userdata('status') != "login") {
-		//     echo "<script>
-		//         alert('Anda harus login terlebih dahulu');
-		//         window.location.href = '" . base_url('Login') . "';
-		//     </script>"; //Url Logi
-		// }
+		if ($this->session->userdata('status') != "login") {
+		    echo "<script>
+		        alert('Anda harus login terlebih dahulu');
+		        window.location.href = '" . base_url('Login') . "';
+		    </script>"; //Url Logi
+		}
 	}
 	public function home()
 	{
