@@ -51,10 +51,7 @@
                 <div class="text-info">
                   <span class="fa fa-quote-left"></span>
                   <div class="text">
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                    Veniam, iure distinctio! Ipsam cumque necessitatibus ut,
-                    expedita aspernatu
-                  </div>
+                  UMKM adalah istilah umum yang merujuk kepada usaha ekonomi produktif yang dimiliki perorangan maupun badan usaha sesuai dengan kriteria yang ditetapkan oleh Undang-undang No. 20 tahun 2008.</div>
                 </div>
                 <div class="box"></div>
               </div>
@@ -85,7 +82,7 @@
             <div class="count">
               <div class="number">
                 <span class="hashtag">#</span>
-                <h1 class="value">8</h1>
+                <h1 class="value">5</h1>
               </div>
               <div class="info">
                 <h6 class="color-purple font-weight-bold mb-1">Bidang Usaha</h6>
@@ -99,7 +96,7 @@
             <div class="count">
               <div class="number">
                 <span class="hashtag">#</span>
-                <h1 class="value">30</h1>
+                <h1 class="value">40</h1>
               </div>
               <div class="info">
                 <h6 class="color-purple font-weight-bold mb-1">Usaha UMKM</h6>
@@ -143,7 +140,7 @@
             <div class="card-bumdes img-scale">
               <div class="img">
                 <img
-                  src="https://static.republika.co.id/uploads/images/inpicture_slide/teller-melayani-nasabah-di-koperasi-simpan-pinjam-kospin-jasa-_140507164316-223.jpg"
+                  src="<?php echo base_url()."assets/frontend/img/common/simpan-pinjam.jpg" ?>"
                   class="img-fluid"
                   alt=""
                 />
@@ -194,118 +191,48 @@
         <div class="row">
           <div class="col-auto link-category">
             <a href="" class="btn-border mr-1 active">Semua Bidang Usaha</a>
-            <a href="" class="btn-border mx-1">Toko Pracangan</a>
-            <a href="" class="btn-border mx-1">Wlijo</a>
-            <a href="" class="btn-border mx-1">Perikanan</a>
-            <a href="" class="btn-border mx-1">Peternakan</a>
-            <a href="" class="btn-border mx-1">Bengkel Otomotif</a>
+            <?php 
+              foreach ($kategori as $key => $value) {
+                echo '<a href="" class="btn-border mx-1">'.$value['nama_kategori'].'</a>';
+              }
+            ?>
           </div>
         </div>
         <div class="row mt-4">
+        <?php 
+            foreach($umkm as $data){
+              $img = explode('|',$data['images']);
+
+        ?>
           <div class="col-md-3">
             <div class="card card-umkm img-scale">
               <div class="top">
                 <div class="img">
-                  <img
+                <img
                     class="card-img-top"
-                    src="https://i2.wp.com/kominfo.cilacapkab.go.id/wp-content/uploads/2018/07/05072018_budidaya_perikanan.jpg?fit=1024%2C687&ssl=1"
+                    src="<?php echo base_url()."assets/img/umkm/".$img[0] ?>"
                     alt="Card image"
                   />
                   <div class="layer"></div>
-                  <div class="sticky-title">Perikanan</div>
+                  <div class="sticky-title"><?php echo $data['nama_kategori'] ?></div>
                 </div>
               </div>
               <div class="card-body">
-                <div class="title">Budidaya Ikan Gabus</div>
+                <div class="title"><?php echo $data['nama_umkm'] ?></div>
                 <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio
-                  ullam explicabo cum quo...
+                    <?php echo substr($data['deskripsi'],0,100) ?>
                 </p>
                 <p class="font-weigh-bold">
-                  <span class="fa fa-user mr-1"></span> Bapak David
+                  <span class="fa fa-user mr-1"></span> <?php echo $data['nama_pemilik'] ?>
                 </p>
-                <a href="" class="color-orange"><u>Selengkapnya ></u></a>
+                <?php 
+                    $url = strtolower(str_replace(' ','-', $data['nama_umkm']));
+                ?>
+                <a href="<?php echo base_url()."umkm/".$data['id_umkm'].'/'.$url ?>" class="color-orange"><u>Selengkapnya ></u></a>
               </div>
             </div>
           </div>
-          <div class="col-md-3">
-            <div class="card card-umkm img-scale">
-              <div class="top">
-                <div class="img">
-                  <img
-                    class="card-img-top"
-                    src="https://cdn2.tstatic.net/tribunnews/foto/bank/images/bengkel-terbesar-yamaha.jpg"
-                    alt="Card image"
-                  />
-                  <div class="layer"></div>
-                  <div class="sticky-title">Bengkel Otomotif</div>
-                </div>
-              </div>
-              <div class="card-body">
-                <div class="title">Bengkel Service Motor</div>
-                <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio
-                  ullam explicabo cum quo...
-                </p>
-                <p class="font-weigh-bold">
-                  <span class="fa fa-user mr-1"></span> Bapak Anang
-                </p>
-                <a href="" class="color-orange"><u>Selengkapnya ></u></a>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-3">
-            <div class="card card-umkm img-scale">
-              <div class="top">
-                <div class="img">
-                  <img
-                    class="card-img-top"
-                    src="https://img.patas.id/2017/05/tanaman-hias.jpg"
-                    alt="Card image"
-                  />
-                  <div class="layer"></div>
-                  <div class="sticky-title">Tanaman Hias</div>
-                </div>
-              </div>
-              <div class="card-body">
-                <div class="title">Tanaman Hias</div>
-                <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio
-                  ullam explicabo cum quo...
-                </p>
-                <p class="font-weigh-bold">
-                  <span class="fa fa-user mr-1"></span> Bapak David
-                </p>
-                <a href="" class="color-orange"><u>Selengkapnya ></u></a>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-3">
-            <div class="card card-umkm img-scale">
-              <div class="top">
-                <div class="img">
-                  <img
-                    class="card-img-top"
-                    src="https://i2.wp.com/kominfo.cilacapkab.go.id/wp-content/uploads/2018/07/05072018_budidaya_perikanan.jpg?fit=1024%2C687&ssl=1"
-                    alt="Card image"
-                  />
-                  <div class="layer"></div>
-                  <div class="sticky-title">Perikanan</div>
-                </div>
-              </div>
-              <div class="card-body">
-                <div class="title">Budidaya Ikan Gabus</div>
-                <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio
-                  ullam explicabo cum quo...
-                </p>
-                <p class="font-weigh-bold">
-                  <span class="fa fa-user mr-1"></span> Bapak David
-                </p>
-                <a href="" class="color-orange"><u>Selengkapnya ></u></a>
-              </div>
-            </div>
-          </div>
+        <?php } ?>
         </div>
       </div>
     </section>
@@ -320,13 +247,8 @@
               Segala Potensinya
             </h1>
             <p class="my-4 font-weight-light color-grey">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Repudiandae explicabo sapiente animi, blanditiis culpa obcaecati,
-              nam, officia quibusdam sequi perferendis quae nesciunt dolor.
-              Magni sed obcaecati, nisi nulla quo nesciunt.. <br />
-              <span class="font-weight-bold"> Kraton Jaya!</span>
-            </p>
-            <a href="" class="btn btn-primary btn-shadow btn-rect px-4 py-2"
+            Desa Kraton merupakan salah satu desa di Kecamatan Yosowilangun Kabupaten Lumajang. Masyarakat Desa Kraton memiliki berbagai usaha UMKM yaitu usaha dalam bidang pertanian ,seni, catering, peternakan. UMKM yang dimiliki Desa Kraton diantaranya yaitu usaha batik, ternak ikan gabus, budidaya bunga, catering makanan , produksi roti , dan ternak bebek.            </p>
+            <a target='_blank' href="https://www.google.com/maps/place/Kraton,+Yosowilangun,+Kabupaten+Lumajang,+Jawa+Timur/@-8.2658576,113.2435029,14z/data=!3m1!4b1!4m5!3m4!1s0x2dd664eb7b33ce43:0x627b83eb737b4b73!8m2!3d-8.2676588!4d113.266243" class="btn btn-primary btn-shadow btn-rect px-4 py-2"
               ><span class="fa fa-map mr-1"></span> Lihat Di Google Map</a
             >
           </div>

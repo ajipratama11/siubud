@@ -29,7 +29,7 @@
   <body>
     <nav class="navbar navbar-expand-lg navbar-light py-4 fixed-top">
       <div class="container custom">
-        <a class="navbar-brand font-weight-bold" href="#"><img src="assets/img/common/logo.png" width="70px" alt="">
+        <a class="navbar-brand font-weight-bold" href="#"><img src="<?php echo base_url()."assets/frontend/img/common/logo.png" ?>" width="150px" alt="">
         </a>
         <button
           class="navbar-toggler"
@@ -44,20 +44,11 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav ml-auto">
-            <li class="nav-item active">
-              <a class="nav-link" href="#"
-                >Beranda <span class="sr-only">(current)</span></a
-              >
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="profil.html">Profil Desa</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="bumdes.html">BUMDesa Kraton</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="umkm.html">Produk UMKM</a>
-            </li>
+              <li class="nav-item active"><a class='nav-link' href="<?php echo base_url() ?>">Beranda</a></li>
+              <li class="nav-item"><a class='nav-link' href="<?php echo base_url().'profil-desa' ?>">Profil Desa</a></li>
+              <li class="nav-item"><a class='nav-link' href="<?php echo base_url().'bumdes' ?>">BUMDesa Kraton</a></li>
+              <li class="nav-item"><a class='nav-link' href="<?php echo base_url().'produk-umkm' ?>">Produk UMKM</a></li>
+
           </ul>
         </div>
       </div>
@@ -67,16 +58,16 @@
       <div class="container custom">
         <div class="row">
           <div class="col-md-4 pr-4">
-            <img src="assets/img/common/logo.png" width="120px" alt="">
-            <p class="mt-2 color-grey font-weight-light">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Saepe illum facere inventore odio. Laboriosam aliquam odit porro, delectus doloribus neque</p>
+            <img src="<?php echo base_url()."assets/frontend/img/common/logo.png" ?>" width="120px" alt="">
+            <p class="mt-2 color-grey font-weight-light">Web ini berisi tentang informasi UMKM yang ada di Desa Kraton dan BUMDES Ramai Jaya.Yang menjelaskan tentang deskripsi dan informasi tentang usaha yang ada di Desa Kraton Kecamatan Yosowilangun Kabupaten Lumajang</p>
           </div>
           <div class="col-md-2">
             <h6 class="color-p  urple font-weight-bold">Internal Link</h6>
             <ul class="link-list-footer">
-              <li><a href="" class="active">Beranda</a></li>
-              <li><a href="">Profil Desa</a></li>
-              <li><a href="">BUMDesa Kraton</a></li>
-              <li><a href="">Produk UMKM</a></li>
+              <li><a href="<?php echo base_url() ?>" class="active">Beranda</a></li>
+              <li><a href="<?php echo base_url().'profil-desa' ?>">Profil Desa</a></li>
+              <li><a href="<?php echo base_url().'bumdes' ?>">BUMDesa Kraton</a></li>
+              <li><a href="<?php echo base_url().'produk-umkm' ?>">Produk UMKM</a></li>
             </ul>
           </div>
           <div class="col-md-3">
@@ -128,6 +119,6 @@
     ></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
-    <script src="assets/js/custom.js"></script>
+    <script src="<?php echo base_url()."assets/frontend/js/custom.js" ?>"></script>
   </body>
 </html>

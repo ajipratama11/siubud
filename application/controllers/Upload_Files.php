@@ -27,7 +27,7 @@ class Upload_Files extends CI_Controller {
                     $_FILES['file']['size']     = $_FILES['files']['size'][$i]; 
                      
                     // File upload configuration 
-                    $uploadPath = 'assets/img/'; 
+                    $uploadPath = 'assets/img/umkm/'; 
                     $config['upload_path'] = $uploadPath; 
                     $config['allowed_types'] = 'jpg|jpeg|png|gif'; 
                     //$config['max_size']    = '100'; 

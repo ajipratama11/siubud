@@ -52,3 +52,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $route['default_controller'] = 'home';
 $route['404_override'] = 'Errorban';
 $route['translate_uri_dashes'] = FALSE;
+$route['profil-desa'] = 'home/profil';
+$route['bumdes'] = 'home/bumdes';
+$route['produk-umkm'] = 'home/umkm';
+$route['umkm/(:any)/(:any)'] = 'home/detail_umkm/$1/$2';

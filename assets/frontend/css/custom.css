@@ -156,7 +156,7 @@ body {
 }
 .right-slide .img img {
   width: 100%;
-  max-height: 500px;
+  max-height: 550px;
   border: 3px solid var(--purple);
   padding: 3px;
 }
