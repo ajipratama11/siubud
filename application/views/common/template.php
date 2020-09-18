@@ -90,7 +90,7 @@
             <span>Buku Besar</span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="<?php echo base_url() . 'Laporan/laporanlabarugi' ?>">
+          <a class="nav-link" href="<?php echo base_url() . 'Pages/artikel' ?>">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Laba Rugi</span></a>
         </li>

@@ -31,6 +31,18 @@ class Pages extends CI_Controller
 		$param['kategori'] = $this->db->query("SELECT * FROM kategori")->result();
 		$this->template->load("pages/v_tambahumkm", $param);
 	}
+	public function artikel()
+	{
+		$param['pageInfo'] = "List Artikel";
+		$this->template->load("artikel/v_artikel", $param);
+	}
+	public function editartikel()
+	{
+		$kode_barang = $this->uri->segment(3);
+		$param['edit'] = $this->db->query("SELECT * FROM barang WHERE kode_barang='$kode_barang'")->result();
+		$param['pageInfo'] = "List Artikel";
+		$this->template->load("artikel/v_editartikel", $param);
+	}
 	public function edit_kategori()
 	{
 		$this->load->view("pages/v_modal_edit_kategori");
@@ -39,14 +51,7 @@ class Pages extends CI_Controller
 	{
 		$this->load->view("pages/v_modal_edit_akun");
 	}
-	public function edit_barang()
-	{
-		$kode_barang = $this->uri->segment(3);
-		$param['pageInfo'] = "Edit Form";
-		$param['kategori'] = $this->db->query("SELECT * FROM kategori")->result();
-		$param['edit'] = $this->db->query("SELECT * FROM barang WHERE kode_barang='$kode_barang'")->result();
-		$this->template->load("pages/v_editbarang", $param);
-	}
+	
 	public function tambah_stok()
 	{
 		$this->load->view("pages/v_modal_tambah_stok");
