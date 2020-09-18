@@ -4,7 +4,7 @@
     <hr>
         <form action="<?= base_url('Pages/aksitambah_artikel'); ?>" method="POST" enctype="multipart/form-data">
             <label>Judul Artikel</label>
-            <input name="nama_umkm"  type="text" placeholder="Nama Umkm" class="form-control">
+            <input name="judul_artikel"  type="text" placeholder="Judul Artikel" class="form-control">
             <input name="tanggal_publish" value="<?= date('Y/m/d'); ?>"  type="text" placeholder="Nama Umkm" class="form-control">
             <br>
             <br>
@@ -12,7 +12,7 @@
             <textarea name="isi_artikel"  cols="30" rows="5" class="form-control"></textarea>
             <br>
             <label>Gambar</label>
-            <input name="gambar"  type="file" placeholder="Stok" class="form-control">
+            <input name="gambar"  type="file"class="form-control">
             <br>
             <?php 
                 $this->load->view("common/btn");

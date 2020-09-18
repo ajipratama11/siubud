@@ -5,7 +5,6 @@ class M_artikel   extends CI_Model
 {
     private $_table = 'artikel';
 
-    public $id_artikel;
     public $judul_artikel;
     public $tanggal_publish;
     public $isi_artikel;
@@ -71,7 +70,7 @@ class M_artikel   extends CI_Model
         $this->judul_artikel = $post['judul_artikel'];
         $this->tanggal_publish = $post['tanggal_publish'];
         $this->isi_artikel = $post['isi_artikel'];
-        $this->stok = $this->_uploadImage();
+        $this->gambar = $this->_uploadImage();
         $this->db->insert($this->_table, $this);
     }
 
@@ -82,14 +81,33 @@ class M_artikel   extends CI_Model
         $this->judul_artikel = $post['judul_artikel'];
         $this->tanggal_publish = $post['tanggal_publish'];
         $this->isi_artikel = $post['isi_artikel'];
-        $this->keterangan = $post['keterangan'];
+        if (!empty($_FILES["gambar"]["name"])) {
+            if ($post["oldfoto"] != 'profil.jpg') {
+			}
+			unlink(FCPATH . 'assets/img/' . $post['oldfoto']);
+            $this->gambar = $this->_uploadImage();
+        } else {
+            $this->gambar = $post["oldfoto"];
+		}
         $this->db->update($this->_table, $this, array("id_artikel" => $id_artikel));
     }
-
+    public function getById($id_artikel)
+    {
+        return $this->db->get_where($this->_table, ["id_artikel" => $id_artikel])->row();
+    }
     public function deleteArtikel($id_artikel)
     {
+        $this->_deleteImage($id_artikel);
         return $this->db->delete($this->_table, array("id_artikel" => $id_artikel));
     }
+    private function _deleteImage($id_artikel)
+	{
+    $product = $this->getById($id_artikel);
+    if ($product->gambar != "camera.jpg") {
+	    $filename = explode(".", $product->gambar)[0];
+		return array_map('unlink', glob(FCPATH."assets/img/$filename.*"));
+    }
+	}
 
     public function hapus_sementara($status, $no_transaksi)
     {
