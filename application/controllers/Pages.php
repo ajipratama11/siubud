@@ -9,13 +9,14 @@ class Pages extends CI_Controller
 		$this->icon = "fa-desktop";
 		$this->load->model('M_barang');
 		$this->load->model('M_kategori');
+		$this->load->model('M_artikel');
 		$this->load->model('M_akun');
-		// if ($this->session->userdata('status') != "login") {
-		//     echo "<script>
-		//         alert('Anda harus login terlebih dahulu');
-		//         window.location.href = '" . base_url('Login') . "';
-		//     </script>"; //Url Logi
-		// }
+		if ($this->session->userdata('status') != "login") {
+		    echo "<script>
+		        alert('Anda harus login terlebih dahulu');
+		        window.location.href = '" . base_url('Login') . "';
+		    </script>"; //Url Logi
+		}
 	}
 	public function home()
 	{
@@ -25,27 +26,58 @@ class Pages extends CI_Controller
 	{
 		$param['pageInfo'] = "Dashboard";
 	}
-	public function form_tambahbarang()
+	public function form_tambahumkm()
 	{
 		$param['pageInfo'] = "Example Form";
 		$param['kategori'] = $this->db->query("SELECT * FROM kategori")->result();
 		$this->template->load("pages/v_tambahumkm", $param);
 	}
+
 	public function artikel()
 	{
-		$param['pageInfo'] = "List Artikel";
+		$param['pageInfo'] = "Tambah Artikel";
 		$this->template->load("artikel/v_artikel", $param);
+	}
+	public function listartikel()
+	{
+		$param['pageInfo'] = "List Artikel";
+		$param['artikel'] = $this->db->query("SELECT * FROM artikel")->result();
+		$this->template->load("artikel/v_listartikel", $param);
 	}
 	public function editartikel()
 	{
-		$kode_barang = $this->uri->segment(3);
-		$param['edit'] = $this->db->query("SELECT * FROM barang WHERE kode_barang='$kode_barang'")->result();
-		$param['pageInfo'] = "List Artikel";
+		$id_artikel = $this->uri->segment(3);
+		$param['artikel'] = $this->db->query("SELECT * FROM artikel WHERE id_artikel='$id_artikel'")->result();
+		$param['pageInfo'] = "Edit Artikel";
 		$this->template->load("artikel/v_editartikel", $param);
+	}
+	public function aksiedit_artikel()
+	{
+		$id_artikel = $this->input->post('id_artikel');
+		$this->M_artikel->updateArtikel($id_artikel);
+		$this->session->set_flashdata('editartikel', '<div class="alert alert-warning" role="alert">Artikel Berhasil Diedit :)</div>');
+		redirect('Pages/listartikel');
+	}
+	public function aksihapus_artikel()
+	{
+		$id_artikel = $this->uri->segment(3);
+		$this->M_artikel->deleteArtikel($id_artikel);
+		$this->session->set_flashdata('deleteartikel', '<div class="alert alert-warning" role="alert">Artikel Berhasil Dihapus :)</div>');
+		redirect('Pages/listartikel');
+	}
+	public function aksitambah_artikel()
+	{
+		$this->M_artikel->addArtikel();
+		$this->session->set_flashdata('tambahartikel', '<div class="alert alert-warning" role="alert">Artikel Berhasil Disimpan :)</div>');
+		redirect('Pages/listartikel');
 	}
 	public function edit_kategori()
 	{
 		$this->load->view("pages/v_modal_edit_kategori");
+	}
+	public function detail()
+	{
+		$this->load->view("artikel/v_modal_detail_artikel");
 	}
 	public function edit_akun()
 	{

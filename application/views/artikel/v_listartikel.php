@@ -1,12 +1,11 @@
 <div class="card shadow py-2">
     <div class="card-body">
         
-    <button style="margin-bottom: 10px;" type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModalCenter">Tambah Akun</button>
+    <a href="<?= base_url('Pages/artikel') ?>" style="margin-bottom: 10px;" class="btn btn-success" >Tambah Artikel</a>
         <div class="table-responsive">
-        <?php echo $this->session->flashdata('editakun'); ?>
-        <?php echo $this->session->flashdata('deleteakun'); ?>
-        <?php echo $this->session->flashdata('usernamebelumada'); ?>
-        <?php echo $this->session->flashdata('usernamesudahada'); ?>
+        <?php echo $this->session->flashdata('editartikel'); ?>
+        <?php echo $this->session->flashdata('deleteartikel'); ?>
+        <?php echo $this->session->flashdata('tambahartikel'); ?>
             <table class="table table-striped table-hover table-bordered datatable table-custom">
                 <thead>
                     <tr>
@@ -15,6 +14,7 @@
                         <td>Tanggal Publish</td>
                         <td>Isi Artikel</td>
                         <td>Gambar</td>
+                        <td>Option</td>
                     </tr>
                 </thead>
                 <tbody>
@@ -24,14 +24,14 @@
                             <td><?= $no++; ?></td>
                             <td><?= $g->judul_artikel ?></td>
                             <td><?= $g->tanggal_publish ?></td>
-                            <td><?= $g->isi_artikel ?></td>
-                            <td><img><?= $g->gambar ?></td>
+                            <td><?= (str_word_count($g->isi_artikel) > 30 ? substr($g->isi_artikel,0,200)."..." : $g->isi_artikel)  ?></td>
+                            <td><a target="_blank" href="<?php echo base_url('./assets/img/'.$g->gambar); ?>"><img width="150px" height="150px" src="<?php echo base_url('./assets/img/'.$g->gambar); ?>"></a></td>
                             <td>
                                 <?php
                                 $dropdown['link'] = array(
-                                    "Edit" => array('openModal', base_url() ."pages/edit_akun/".$g->id_artikel),
-                                    "Detail" => array('openModal', base_url() ."pages/detail_artikel/".$g->id_artikel),
-                                    "Delete" => array('confirm', base_url('Pages/delete_akun/'.$g->id_artikel))
+                                    "Edit" => base_url() ."pages/editartikel/".$g->id_artikel,
+                                    "Detail" => array('openModal', base_url() ."pages/detail/".$g->id_artikel),
+                                    "Delete" => array('confirm', base_url('Pages/aksihapus_artikel/'.$g->id_artikel))
                                 );
                                 $this->load->view("common/dropdown", $dropdown);
                                 ?>
