@@ -1,7 +1,7 @@
 <div class="card shadow py-2">
     <div class="card-body">
         
-    <button style="margin-bottom: 10px;" type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModalCenter">Tambah Akun</button>
+    <a href="<?= base_url('Pages/artikel') ?>" style="margin-bottom: 10px;" class="btn btn-success" >Tambah Artikel</a>
         <div class="table-responsive">
         <?php echo $this->session->flashdata('editartikel'); ?>
         <?php echo $this->session->flashdata('deleteartikel'); ?>
@@ -24,7 +24,7 @@
                             <td><?= $no++; ?></td>
                             <td><?= $g->judul_artikel ?></td>
                             <td><?= $g->tanggal_publish ?></td>
-                            <td><?= $g->isi_artikel ?></td>
+                            <td><?= (str_word_count($g->isi_artikel) > 30 ? substr($g->isi_artikel,0,200)."..." : $g->isi_artikel)  ?></td>
                             <td><a target="_blank" href="<?php echo base_url('./assets/img/'.$g->gambar); ?>"><img width="150px" height="150px" src="<?php echo base_url('./assets/img/'.$g->gambar); ?>"></a></td>
                             <td>
                                 <?php
